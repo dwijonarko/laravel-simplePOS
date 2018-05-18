@@ -28,7 +28,7 @@
 
 <!-- Kategori Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('kategori_id', 'Kategori Id:') !!}
+    {!! Form::label('kategori_id', 'Kategori:') !!}
     {!! Form::select('kategori_id',$kategori,null,['class'=>'form-control']) !!}
     
 </div>

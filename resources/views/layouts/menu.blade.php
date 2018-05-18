@@ -18,3 +18,7 @@
     <a href="{!! route('pegawais.index') !!}"><i class="fa fa-user-md"></i><span>Pegawai</span></a>
 </li>
 
+<li class="{{ Request::is('penjualans*') ? 'active' : '' }}">
+    <a href="{!! route('penjualans.index') !!}"><i class="fa fa-edit"></i><span>Penjualans</span></a>
+</li>
+

@@ -29,3 +29,7 @@ Route::resource('agamas', 'AgamaController');
 Route::resource('pelanggans', 'PelangganController');
 
 Route::resource('pegawais', 'PegawaiController');
+
+Route::resource('penjualans', 'PenjualanController');
+
+Route::get('barang/{id}','BarangController@search');
