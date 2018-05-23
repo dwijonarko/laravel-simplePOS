@@ -13,7 +13,7 @@ class CreateCreateDetailPenjualanTabelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('create_detail_penjualan_tabels', function (Blueprint $table) {
+        Schema::create('detail_penjualans', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('penjualan_id')->unsigned();
             $table->integer('barang_id')->unsigned();
@@ -33,6 +33,6 @@ class CreateCreateDetailPenjualanTabelsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('create_detail_penjualan_tabels');
+        Schema::drop('detail_penjualans');
     }
 }
