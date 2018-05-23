@@ -1,42 +1,50 @@
-<!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $penjualan->id !!}</p>
+<div class="row">
+    <div class="col-md-4 col-sm-4">
+    <h4>{{ config('app.name') }}</h4>
+    <address>
+        <p>Jalan Raya Tlogowaru no 3</p>
+        <p>Kedungkandan Malang</p>
+        <p>65132</p>
+    </address>
+    </div>
+    <div class="col-md-4 col-sm-4">
+        <h4>Penjualan</h4>
+        <p>{{$penjualan->tanggal}}</p>
+        <p>ID : {{$penjualan->id}} </p>
+        <p>Pegawai : {{$penjualan->pegawai->nama}} </p>
+    </div>
+    <div class="col-md-4 col-sm-4">
+        <h4>Pelanggan</h4>
+        <p>{{$penjualan->pelanggan->nama}}</p>
+        <p>Alamat : {{$penjualan->pelanggan->alamat}}</p>
+        <p>Telp : {{$penjualan->pelanggan->telp}}</p>
+        <p>Email :{{$penjualan->pelanggan->email}}</p>
+    </div>
 </div>
-
-<!-- Tanggal Field -->
-<div class="form-group">
-    {!! Form::label('tanggal', 'Tanggal:') !!}
-    <p>{!! $penjualan->tanggal !!}</p>
+<div class="row">
+    <div class="col-md-10 col-sm-10">
+    <h3>Detail Penjualan</h3>
+    <table class="table table-bordered">
+        <tr>
+            <th class="col-md-1">No</th>
+            <th class="col-md-2">Kode</th>
+            <th class="col-md-3">Nama</th>
+            <th class="col-md-2">Qty</th>
+            <th class="col-md-2">Sub Total</th>
+        </tr>
+        @foreach ($penjualan->detail_penjualan as $row=>$item)
+            <tr>
+                <td>{{$row + 1 }}</td>
+                <td>{{$item->barang($item->barang_id)->kode}}</td>
+                <td>{{$item->barang($item->barang_id)->nama}}</td>
+                <td class="text-right">{{$item->qty}}</td>
+                <td class="text-right">{{$item->subtotal}}</td>
+            </tr>
+        @endforeach
+        <tr>
+            <td colspan="4" class="text-right">Total</td>
+            <td class="text-right">{{$penjualan->total}}</td>
+        </tr>
+    </table>
 </div>
-
-<!-- Pelanggan Id Field -->
-<div class="form-group">
-    {!! Form::label('pelanggan_id', 'Pelanggan Id:') !!}
-    <p>{!! $penjualan->pelanggan_id !!}</p>
 </div>
-
-<!-- Pegawai Id Field -->
-<div class="form-group">
-    {!! Form::label('pegawai_id', 'Pegawai Id:') !!}
-    <p>{!! $penjualan->pegawai_id !!}</p>
-</div>
-
-<!-- Total Field -->
-<div class="form-group">
-    {!! Form::label('total', 'Total:') !!}
-    <p>{!! $penjualan->total !!}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $penjualan->created_at !!}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $penjualan->updated_at !!}</p>
-</div>
-

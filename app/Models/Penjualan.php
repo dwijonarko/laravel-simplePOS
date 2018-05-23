@@ -56,5 +56,18 @@ class Penjualan extends Model
         'total' => 'required'
     ];
 
+    public function pelanggan()
+    {
+        return $this->belongsTo('\App\Models\Pelanggan');
+    }
+
+    public function pegawai()
+    {
+        return $this->belongsTo('\App\Models\Pegawai');
+    }
+
+    public function detail_penjualan(){
+        return $this->hasMany('\App\Models\DetailPenjualan');
+    }
     
 }

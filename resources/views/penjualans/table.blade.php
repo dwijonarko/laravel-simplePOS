@@ -12,8 +12,8 @@
     @foreach($penjualans as $penjualan)
         <tr>
             <td>{!! $penjualan->tanggal !!}</td>
-            <td>{!! $penjualan->pelanggan_id !!}</td>
-            <td>{!! $penjualan->pegawai_id !!}</td>
+            <td>{!! $penjualan->pelanggan->nama !!}</td>
+            <td>{!! $penjualan->pegawai->nama !!}</td>
             <td>{!! $penjualan->total !!}</td>
             <td>
                 {!! Form::open(['route' => ['penjualans.destroy', $penjualan->id], 'method' => 'delete']) !!}

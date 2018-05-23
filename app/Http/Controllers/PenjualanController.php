@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
-
+use DB;
 class PenjualanController extends AppBaseController
 {
     /** @var  PenjualanRepository */
@@ -62,14 +62,35 @@ class PenjualanController extends AppBaseController
      */
     public function store(CreatePenjualanRequest $request)
     {
-        $input = $request->all();
-        dd($input);
+        DB::beginTransaction();
+        try {
+            $input = $request->all();
+            $penjualan = $this->penjualanRepository->create($input);
+            foreach ($input['kode'] as $key => $row) {
+                $detail_penjualan = new \App\Models\DetailPenjualan();
+                $barang = \App\Models\Barang::where('kode', $input['kode'][$key])->first();
 
-        // $penjualan = $this->penjualanRepository->create($input);
+                $detail_penjualan->barang_id = $barang->id;
+                $detail_penjualan->qty = $input['qty'][$key];
+                $detail_penjualan->subtotal = $input['subtotal'][$key];
+                $detail_penjualan->penjualan_id = $penjualan->id;
+                $detail_penjualan->save();
 
-        // Flash::success('Penjualan saved successfully.');
-
-        // return redirect(route('penjualans.index'));
+                $new_stok = (int)$barang->stock - (int)$input['qty'][$key];
+                $barang->stock = $new_stok;
+                $barang->save();
+            }
+            $result = $penjualan->id;
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollBack();
+        }
+       
+        
+        // dd( $result);
+        Flash::success('Penjualan saved successfully.');
+        // // return redirect(route('penjualans.index'));
+            return redirect(route('penjualans.show', $result));    
     }
 
     /**

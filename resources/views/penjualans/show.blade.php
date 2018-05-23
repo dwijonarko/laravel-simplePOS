@@ -12,6 +12,8 @@
                 <div class="row" style="padding-left: 20px">
                     @include('penjualans.show_fields')
                     <a href="{!! route('penjualans.index') !!}" class="btn btn-default">Back</a>
+                    <a href="#" class="btn btn-primary"> <i class="fa fa-print"></i> Print</a>
+                    <a href="#" class="btn btn-primary"> <i class="fa fa-edit"></i> New</a>
                 </div>
             </div>
         </div>

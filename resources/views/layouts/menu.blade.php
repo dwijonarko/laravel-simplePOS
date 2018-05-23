@@ -19,6 +19,6 @@
 </li>
 
 <li class="{{ Request::is('penjualans*') ? 'active' : '' }}">
-    <a href="{!! route('penjualans.index') !!}"><i class="fa fa-edit"></i><span>Penjualans</span></a>
+    <a href="{!! route('penjualans.index') !!}"><i class="fa fa-shopping-cart"></i><span>Penjualan</span></a>
 </li>
 

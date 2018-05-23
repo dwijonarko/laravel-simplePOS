@@ -66,6 +66,12 @@ class Barang extends Model
         return $this->belongsTo('App\Models\Kategori');
     }
 
+    public function detail_penjualan()
+    {
+        return $this->belongsTo('App\Models\DetailPenjualan');
+    }
+
+
     public function getKodeNamaAttribute()
     {
         return $this->kode . ' ' . $this->nama;
