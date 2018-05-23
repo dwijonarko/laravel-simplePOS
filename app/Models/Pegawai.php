@@ -80,5 +80,10 @@ class Pegawai extends Model
         return $this->belongsTo('App\Models\Agama');
         // return $this->belongsTo('Agama');
     }
+
+    public function penjualan()
+    {
+        return $this->hasMany('\App\Models\Penjualan');
+    }  
     
 }

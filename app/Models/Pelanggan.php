@@ -55,5 +55,7 @@ class Pelanggan extends Model
         'email' => 'required|min:5|email'
     ];
 
-    
+    public function penjualan(){
+        return $this->hasMany('\App\Models\Penjualan');
+    }   
 }

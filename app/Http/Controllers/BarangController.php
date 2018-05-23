@@ -157,4 +157,9 @@ class BarangController extends AppBaseController
 
         return redirect(route('barangs.index'));
     }
+    
+    public function search($id){
+        $barang = $this->barangRepository->findWithoutFail($id);
+        return $barang;
+    }
 }
