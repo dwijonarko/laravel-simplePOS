@@ -1,0 +1,35 @@
+php artisan infyom:scaffold Penjualan
+
+tanggal date date
+required
+
+pelanggan_id integer:unsigned:foreign,pelanggans,id select
+required
+
+pegawai_id integer:unsigned:foreign,pegawais,id select
+required
+
+total integer text
+required
+
+===========================================================
+php artisan infyom:model DetailPenjualan
+
+penjualan_id integer:unsigned:foreign,penjualans,id
+
+barang_id integer:unsigned:foreign,barangs,id
+
+qty integer 
+
+subtotal integer
+
+===========================================================
+php artisan infyom:migration DetailPenjualan
+
+penjualan_id integer:unsigned:foreign,penjualans,id
+
+barang_id integer:unsigned:foreign,barangs,id
+
+qty integer 
+
+subtotal integer

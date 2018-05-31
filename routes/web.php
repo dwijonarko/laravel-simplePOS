@@ -17,19 +17,21 @@ Route::get('/', function () {
 
 
 Auth::routes();
+Route::middleware(['auth', 'check-permission:admin|superadmin|user'])->group(function () {
+    Route::get('/home', 'HomeController@index');
+    Route::resource('penjualans', 'PenjualanController');
+    Route::get('barang/{id}', 'BarangController@search');
+});
 
-Route::get('/home', 'HomeController@index');
 
-Route::resource('kategoris', 'KategoriController');
+Route::middleware(['auth', 'check-permission:admin|superadmin'])->group(function () {
+    Route::resource('kategoris', 'KategoriController');
+    Route::resource('barangs', 'BarangController');
+    Route::resource('agamas', 'AgamaController');
+    Route::resource('pelanggans', 'PelangganController');
+    Route::resource('pegawais', 'PegawaiController');
+    Route::resource('/users', 'UserController');
+});
 
-Route::resource('barangs', 'BarangController');
 
-Route::resource('agamas', 'AgamaController');
-
-Route::resource('pelanggans', 'PelangganController');
-
-Route::resource('pegawais', 'PegawaiController');
-
-Route::resource('penjualans', 'PenjualanController');
-
-Route::get('barang/{id}','BarangController@search');
+Route::resource('users', 'UserController');

@@ -22,3 +22,7 @@
     <a href="{!! route('penjualans.index') !!}"><i class="fa fa-shopping-cart"></i><span>Penjualan</span></a>
 </li>
 
+<li class="{{ Request::is('users*') ? 'active' : '' }}">
+    <a href="{!! route('users.index') !!}"><i class="fa fa-users"></i><span>User</span></a>
+</li>
+
